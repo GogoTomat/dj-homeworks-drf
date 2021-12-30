@@ -3,9 +3,11 @@ from django.urls import reverse
 import csv
 from django.core.paginator import Paginator
 
+
 with open('data-398-2018-08-30.csv', "r", encoding="utf-8") as csvfile:
-        reader = csv.DictReader(csvfile)
-        bus_stops_list = [row for row in reader]
+    reader = csv.DictReader(csvfile)
+    bus_stops_list = [row for row in reader]
+
 
 def index(request):
     return redirect(reverse('bus_stations'))
