@@ -10,8 +10,15 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         with open('phones.csv', 'r') as file:
-            phones = list(csv.DictReader(file, delimiter=';'))
+            phones = csv.reader(file, delimiter=';')
+            next(phones)
+            for phone in phones:
+                new_phone = Phone(
+                    name=phone[1],
+                    image=phone[2],
+                    price=int(phone[3]),
+                    release_date=phone[4],
+                    lte_exists=bool(phone[5]))
+                new_phone.get_slug()
+                new_phone.save()
 
-        for phone in phones:
-            # TODO: Добавьте сохранение модели
-            pass
