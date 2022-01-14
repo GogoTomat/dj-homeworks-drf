@@ -20,7 +20,7 @@ from books.views import books_view, books_of_date_view
 urlpatterns = [
     path('', books_view, name='books'),
     path('books/', books_view, name='books'),
-    path('books/<date>', books_of_date_view, name='books_of_date'),
+    path('books/<slug:date>', books_of_date_view, name='books_of_date'),
     path('admin/', admin.site.urls),
 
 ]
