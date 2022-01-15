@@ -14,6 +14,6 @@ class Phone(models.Model):
     def __str__(self):
         return f"{self.name} цена {self.price}"
 
-    def get_slug(self):
+    def save(self, force_insert=False, force_update=False, using=None,update_fields=None):
         self.slug = slugify(self.name)
 
