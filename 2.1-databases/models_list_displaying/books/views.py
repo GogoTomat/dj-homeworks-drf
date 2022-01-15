@@ -1,7 +1,5 @@
 from django.shortcuts import render
 from books.models import Book
-from django.core.paginator import Paginator
-from django.urls import reverse
 
 
 def books_view(request):
@@ -25,7 +23,6 @@ def books_of_date_view(request, date):
                'prev_page_url': prev_page,
                'next_page_url': next_page,
                }
-    print(context)
     return render(request, template, context)
 
 
