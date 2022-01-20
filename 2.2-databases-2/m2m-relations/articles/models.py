@@ -19,6 +19,7 @@ class Article(models.Model):
 class Scope(models.Model):
 
     tag_name = models.CharField(max_length=50, unique=True, verbose_name='Название')
+    titles = models.ManyToManyField(Article, related_name='scopes')
 
     class Meta:
         verbose_name = 'Тематика'
@@ -29,8 +30,8 @@ class Scope(models.Model):
 
 
 class ArticleScope(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='scopes')
-    scope = models.ForeignKey(Scope, on_delete=models.CASCADE, related_name='scopes')
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='is_main')
+    scope = models.ForeignKey(Scope, on_delete=models.CASCADE, related_name='is_main')
     is_main = models.BooleanField(default=False)
 
     def __str__(self):
