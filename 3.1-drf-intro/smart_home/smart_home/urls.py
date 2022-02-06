@@ -1,7 +1,7 @@
-"""simple_crud URL Configuration
+"""smart_home URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,14 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from measurements.views import ProjectViewSet, MeasurementViewSet
-
-router = DefaultRouter()
-router.register('project', ProjectViewSet)
-router.register('measurement', MeasurementViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(router.urls)),
+    path('api/', include('measurement.urls')),  # подключаем маршруты из приложения measurement
 ]
